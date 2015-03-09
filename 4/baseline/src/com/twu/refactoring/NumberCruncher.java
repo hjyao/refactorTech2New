@@ -8,34 +8,27 @@ public class NumberCruncher {
     }
 
     public int countEven() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 0) count++;
-        }
-        return count;
+        return count(new Even());
     }
 
     public int countOdd() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 1) count++;
-        }
-        return count;
+        return count(new Odd());
     }
 
     public int countPositive() {
+        return count(new Positive());
+    }
+
+    public int countNegative() {
+        return count(new Negative());
+    }
+
+    private int count(Counter counter) {
         int count = 0;
         for (int number : numbers) {
-            if (number >= 0) count++;
+            if (counter.isMatched(number)) count++;
         }
         return count;
     }
 
-    public int countNegative() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number < 0) count++;
-        }
-        return count;
-    }
 }
